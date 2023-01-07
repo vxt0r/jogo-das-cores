@@ -18,10 +18,10 @@ const geraCorAleatoria = ()=>{
 }
 
 const criaArrayOpcoes = ()=>{
-    geraCorAleatoria()
-    geraCorAleatoria()
-    geraCorAleatoria()
-    geraCorAleatoria()
+    const numeroOpcoes = 4
+    for(let i=0; i < numeroOpcoes; i++){
+        geraCorAleatoria()
+    }
 }
 
 const setaCorPergunta = ()=>{
@@ -51,28 +51,34 @@ const reiniciaJogo = ()=>{
     geraOpcoesTela()
 }
 
-const verificaResposta = (corElemento,elemento)=>{
-    let msg = document.createElement('p')
-   
-    if(corElemento === corPergunta){
-        msg.innerText = "CORRETO"
-        pergunta.appendChild(msg)
-        elemento.style.border = " 7px solid green"
-
-        setTimeout(()=>{
-            reiniciaJogo()
-        },3000)
-        
-    }
-    else{
-        msg.innerText = "ERRADO"
-        pergunta.appendChild(msg)
-        elemento.style.border = " 7px solid red"
-    }
+const removerMensagem = (elemento,mensagem)=>{
     setTimeout(()=>{
-        pergunta.removeChild(msg)
+        pergunta.removeChild(mensagem)
         elemento.style.border = "none"
     },2000)
+}
+
+const criaMensagem = (elemento,texto,cor)=>{
+    const msg = document.createElement('p')
+    msg.innerText = texto
+    pergunta.appendChild(msg)
+    elemento.style.border = `7px solid ${cor}`
+    removerMensagem(elemento,msg)
+}
+
+const verificaResposta = (corElemento,elemento)=>{
+    const msg = document.createElement('p')
+   
+    if(corElemento === corPergunta){
+        criaMensagem(elemento,"CORRETO","green")
+        
+        setTimeout(()=>{
+            reiniciaJogo()
+        },2500)   
+    }
+    else{
+        criaMensagem(elemento,"ERRADO","red")
+    }
 }
 
 opcoes.addEventListener('click',(e)=>{
