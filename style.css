@@ -37,3 +37,64 @@ main{
     height: 100px;
     margin-top: 5px;
 }
+
+
+@media (max-width: 280px){
+    main{
+        width: 80vw;
+        margin-top: 20px;
+    }
+    .pergunta{
+        margin-top: 8px;
+        width: 80vw;
+        height: 20vh;
+    }
+    .opcoes{
+       margin-bottom: 60px;
+       width: 80vw;
+    }
+    .cor-opcao{
+        border-radius: 6px;
+        width: 100px;
+        height: 50px;
+        margin-bottom: 5px;
+    }
+
+}
+
+
+@media (max-width: 600px){
+    main{
+        margin-top: 20px;
+    }
+    
+    .opcoes{
+       margin-bottom: 60px;
+    }
+    
+    .cor-opcao{
+        border-radius: 6px;
+        width: 220px;
+        height: 70px;
+        margin-bottom: 5px;
+    }
+
+}
+
+
+@media (max-width: 1024px){
+    main{
+        margin-top: 20px;
+    }
+    .opcoes{
+       margin-bottom: 90px;
+    }
+    
+    .cor-opcao{
+        border-radius: 6px;
+        width: 220px;
+        height: 70px;
+        margin-bottom: 5px;
+    }
+
+}
