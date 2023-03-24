@@ -19,8 +19,13 @@ main{
 .pergunta{
     margin-top: 0.5em;
     width: 40vw;
-    height: 20vh;
+    height: 10vh;   
 }
+
+.placar h2{
+    color: white;
+}
+
 .opcoes{
     width: 40vw;
     height: 40vh;

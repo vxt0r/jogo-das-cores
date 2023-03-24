@@ -1,6 +1,8 @@
 let cores = []
 let corPergunta
 
+let score = 0
+
 const geraValor = ()=>{
     let valor = Math.floor(Math.random() * 256)
     return valor
@@ -30,6 +32,14 @@ const setaCorPergunta = ()=>{
 
 setaCorPergunta()
 
+const mostraPlacar = ()=>{
+    if(score === 10){
+        alert('Parabéns você conseguiu acertar 10')
+        score = 0;
+    }
+    
+    $('.placar').html(`<h2>Placar: ${score}</h2>`)
+}
 const geraOpcoesTela = ()=>{
     cores.forEach((cor)=>{
         const divCor = $('<div>').addClass('cor-opcao').css('background-color',cor)
@@ -37,6 +47,7 @@ const geraOpcoesTela = ()=>{
     })
 }
 
+mostraPlacar()
 geraOpcoesTela()
 
 const reiniciaJogo = ()=>{
@@ -63,14 +74,13 @@ const criaMensagem = (elemento,texto,cor)=>{
 const verificaResposta = (corElemento,elemento)=>{
     if(corElemento === corPergunta){
         criaMensagem(elemento,"CORRETO","green")
-        
-        setTimeout(()=>{
-            reiniciaJogo()
-        },2500)   
+        score++
+        mostraPlacar()
     }
-    else{
-        criaMensagem(elemento,"ERRADO","red")
-    }
+
+    else criaMensagem(elemento,"ERRADO","red")
+
+    setTimeout(()=>{reiniciaJogo()},2500)   
 }
 
 $('.opcoes').click((e)=>{
